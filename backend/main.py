@@ -8,7 +8,6 @@ from fastapi import Depends, FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from fastapi.staticfiles import StaticFiles
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel, Field
@@ -328,5 +327,3 @@ def photo(pid: int, user=Depends(current_user)):
     return Response(content=bytes(doc["Profile_Pic"]), media_type=doc.get("photo_content_type", "image/jpeg"))
 
 
-# Keep this mount LAST so /api/* routes are matched before the SPA fallback.
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
