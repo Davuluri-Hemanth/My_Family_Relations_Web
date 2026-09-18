@@ -1,0 +1,8 @@
+.env
+.venv
+venv
+__pycache__
+*.pyc
+My_Family_Relations_Global_Web_Production.zip
+My_Family_Relations_Vercel_NoCard.zip
+DEPLOY_RENDER.md
