@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: my-family-relations
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB
+        value: Family_Relations
+      - key: MONGO_PERSONS_COLLECTION
+        value: persons
+      - key: MONGO_RELATIONS_COLLECTION
+        value: relationships
+      - key: MONGO_USERS_COLLECTION
+        value: users
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: JWT_EXPIRE_MINUTES
+        value: "720"
+      - key: MAX_UPLOAD_MB
+        value: "5"
+      - key: CORS_ORIGINS
+        value: ""
+      - key: ENABLE_API_DOCS
+        value: "false"
+      - key: WEB_CONCURRENCY
+        value: "2"
